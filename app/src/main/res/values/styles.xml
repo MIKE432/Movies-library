@@ -1,0 +1,22 @@
+<resources>
+    <!-- Base application theme. -->
+    <attr name="buttonPrimary" format="reference"/>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/primary_800</item>
+        <item name="colorPrimaryDark">@color/primary_900</item>
+        <item name="colorAccent">@color/secondary_800</item>
+    </style>
+
+    <style name="AppTheme.LoginTheme">
+        <item name="colorPrimaryDark">@color/primary_900</item>
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowFullscreen">true</item>-->
+        <item name="buttonPrimary">@style/AppButton.Primary</item>
+    </style>
+
+    <style name="AppTheme.LoginTheme.Buttons">
+        <item name="colorAccent">@color/primary_900</item>
+    </style>
+</resources>
