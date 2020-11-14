@@ -16,6 +16,13 @@
         <item name="buttonPrimary">@style/AppButton.Primary</item>
     </style>
 
+    <style name="AppTheme.InitActivity">
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+
     <style name="AppTheme.LoginTheme.Buttons">
         <item name="colorAccent">@color/primary_900</item>
     </style>

@@ -20,3 +20,12 @@ data class SessionResponse (
     val success: Boolean,
     val session_id: String
 )
+
+data class UserDetailsResponse (
+    val status_code: Int?,
+    val status_message: String?,
+    val id: Int?,
+    val name: String?,
+    val username: String?
+
+)

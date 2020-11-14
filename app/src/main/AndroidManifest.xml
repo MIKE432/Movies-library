@@ -11,13 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.guest.login_activity.LoginActivity" android:theme="@style/AppTheme.LoginTheme">
+        <activity android:name=".ui.guest.init_activity.InitActivity" android:theme="@style/AppTheme.InitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.guest.login_activity.LoginActivity" android:theme="@style/AppTheme.LoginTheme" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.logged.profile_activity.ProfileActivity"/>
+        <activity android:name=".ui.logged.logged_activity.main_activity.MainActivity"/>
     </application>
 
 </manifest>

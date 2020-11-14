@@ -161,15 +161,42 @@
                 android:backgroundTint="@color/primary_900"
                 />
         </androidx.constraintlayout.motion.widget.MotionLayout>
-
-
         <TextView
-            android:id="@+id/login_activity_sign_in"
-            android:layout_width="match_parent"
+            android:id="@+id/login_activity_error"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/login_activity_form_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Niepoprawny email lub hasło"
+            android:textColor="@color/error_color"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Zarejestruj się"
-            />
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/login_activity_process_container"
+            app:layout_constraintVertical_bias="0.8">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Nie masz konta? "
+                />
+            <TextView
+                android:id="@+id/login_activity_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_900"
+                android:textStyle="bold"
+                android:text="Zarejestruj się"
+                />
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/login_activity_guideline1"

@@ -3,4 +3,7 @@
     <string name="email_placeholder"><i>Email</i></string>
     <string name="password_placeholder"><i>Hasło</i></string>
     <string name="username_placeholder"><i>Nazwa użytkownika</i></string>
+
+    <string name="rated">Ocenione</string>
+    <string name="favourite">Polubione</string>
 </resources>

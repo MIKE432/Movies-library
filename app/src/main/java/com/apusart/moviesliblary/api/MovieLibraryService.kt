@@ -59,4 +59,12 @@ class MovieLibraryService {
 
         return sessionResponse.session_id
     }
+
+    suspend fun getUserDetails(sessionId: String): UserDetailsResponse {
+        val userDetails = service.getUserDetails(sessionId = sessionId)
+
+        userDetails?.username ?: throw Exception()
+
+        return userDetails
+    }
 }
