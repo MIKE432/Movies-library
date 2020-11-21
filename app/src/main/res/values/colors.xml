@@ -16,14 +16,14 @@
     <color name="golden_rod">#EEB507</color>
     <color name="nav_default_color">#a3bbff</color>
 
-    <color name="primary_900">#0017b7</color>
-    <color name="primary_800">#0022c1</color>
-    <color name="primary_700">#2a29c8</color>
-    <color name="primary_600">#4131d0</color>
-    <color name="primary_500">#4e35d7</color>
-    <color name="primary_400">#6e53dd</color>
-    <color name="primary_300">#8b72e3</color>
-    <color name="primary_200">#ae9bea</color>
+    <color name="primary_900">#0b1837</color>
+    <color name="primary_800">#13274e</color>
+    <color name="primary_700">#19305b</color>
+    <color name="primary_600">#213965</color>
+    <color name="primary_500">#273f6d</color>
+    <color name="primary_400">#47597f</color>
+    <color name="primary_300">#667593</color>
+    <color name="primary_200">#8f9ab2</color>
     <color name="primary_100">#cec3f2</color>
     <color name="primary_50">#ece7fa</color>
 
@@ -45,4 +45,6 @@
     <color name="white">#FFF</color>
 
     <color name="error_color">#F22</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

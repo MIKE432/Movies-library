@@ -1,7 +1,16 @@
 <resources>
     <!-- Base application theme. -->
     <attr name="buttonPrimary" format="reference"/>
+    <attr name="backgroundRippleColor" format="color"/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/primary_800</item>
+        <item name="colorPrimaryDark">@color/primary_900</item>
+        <item name="colorAccent">@color/secondary_800</item>
+    </style>
+
+    <style name="AppThemeWithActionBar" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
 
         <item name="colorPrimary">@color/primary_800</item>
@@ -16,14 +25,29 @@
         <item name="buttonPrimary">@style/AppButton.Primary</item>
     </style>
 
-    <style name="AppTheme.InitActivity">
+    <style name="AppTheme.InitActivityTheme">
         <item name="colorPrimaryDark">@color/white</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
 
     </style>
 
+    <style name="AppThemeWithActionBar.MainActivityTheme">
+        <item name="android:windowEnterTransition">@anim/nav_default_pop_enter_anim</item>
+        <item name="android:windowExitTransition">@anim/nav_default_pop_exit_anim</item>
+    </style>
+
     <style name="AppTheme.LoginTheme.Buttons">
         <item name="colorAccent">@color/primary_900</item>
+        <item name="android:windowEnterTransition">@anim/nav_default_enter_anim</item>
+        <item name="android:windowExitTransition">@anim/nav_default_exit_anim</item>
+    </style>
+
+    <style name="RippleContainer">
+        <item name="backgroundRippleColor">@color/primary_900</item>
+    </style>
+
+    <style name="RippleContainer.top_bar">
+        <item name="backgroundRippleColor">@color/primary_700</item>
     </style>
 </resources>

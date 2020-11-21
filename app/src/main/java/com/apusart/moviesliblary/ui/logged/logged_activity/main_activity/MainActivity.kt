@@ -11,10 +11,9 @@ class MainActivity: AppCompatActivity(R.layout.main_logged_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        texttest.setOnClickListener {
-            startActivity(Intent(this,  ProfileActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        main_activity_profile_icon_container.setOnClickListener {
+            startActivity(Intent(this,  ProfileActivity::class.java))
         }
     }
 }

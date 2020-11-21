@@ -10,8 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.guest.init_activity.InitActivity" android:theme="@style/AppTheme.InitActivity">
+        android:theme="@style/AppTheme"
+        android:name="com.apusart.MoviesLibraryApplication">
+        <activity android:name=".ui.guest.init_activity.InitActivity" android:theme="@style/AppTheme.InitActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

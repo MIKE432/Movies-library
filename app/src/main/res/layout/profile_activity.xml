@@ -1,135 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewModel"
             type="com.apusart.moviesliblary.ui.logged.profile_activity.ProfileActivityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/background_white">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/profile_activity_scrollable_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/profile_background">
+            android:layout_height="match_parent">
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile_activity_back_container"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:layout_constraintTop_toTopOf="parent">
-                <ImageView
+                android:layout_height="match_parent"
+                android:background="@color/background_white">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profile_activity_user_data_container"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/profile_background">
+                    <View
+                        android:id="@+id/profile_activity_view1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/profile_activity_view1">
+
+                        <LinearLayout
+                            android:id="@+id/profile_activity_profile_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/circle_shape"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+                            <ImageView
+                                android:id="@+id/profile_activity_profile_photo"
+                                android:layout_width="128dp"
+                                android:layout_height="128dp"
+                                android:layout_margin="5dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/profile_activity_rated_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/circle_shape"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/profile_activity_profile_container">
+                            <ProgressBar
+                                android:id="@+id/profile_activity_rated_progressbar"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/circular_progress_bar"
+                                android:background="@drawable/circle_shape"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:max="100"
+                                android:progress="55"
+                                android:layout_margin="5dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/profile_activity_fav_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/circle_shape"
+                            app:layout_constraintStart_toEndOf="@id/profile_activity_profile_container"
+                            app:layout_constraintEnd_toEndOf="parent">
+                            <ProgressBar
+                                android:id="@+id/profile_activity_fav_progressbar"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/circular_progress_bar"
+                                android:background="@drawable/circle_shape"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:max="100"
+                                android:progress="81"
+                                android:layout_margin="5dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            app:layout_constraintTop_toBottomOf="@id/profile_activity_fav_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/favourite"
+                            style="@style/CaptionRoboto12PtBlack"
+                            app:layout_constraintStart_toEndOf="@id/profile_activity_profile_container"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="10dp"/>
+
+                        <TextView
+                            app:layout_constraintTop_toBottomOf="@id/profile_activity_rated_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/rated"
+                            style="@style/CaptionRoboto12PtBlack"
+                            app:layout_constraintEnd_toStartOf="@id/profile_activity_profile_container"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/profile_activity_profile_container"
+                            app:layout_constraintStart_toStartOf="@id/profile_activity_profile_container"
+                            app:layout_constraintEnd_toEndOf="@id/profile_activity_profile_container"
+                            app:userResourceName="@{viewModel.user}"
+                            android:textAppearance="@style/TitleRoboto20Pt"
+                            tools:text="MIKEswim145"
+                            android:layout_marginTop="10dp"
+                            android:textSize="24sp"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profile_activity_created_list_container"
+                    app:layout_constraintTop_toBottomOf="@id/profile_activity_user_data_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/profile_list_background"
+                    android:paddingTop="15dp">
+                    <TextView
+                        android:id="@+id/profile_activity_created_list_headline"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/created_list"
+                        style="@style/ButtonRoboto14Pt"
+                        android:layout_marginStart="15dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/secondary_800"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/profile_activity_created_list"
+                        app:layout_constraintTop_toBottomOf="@id/profile_activity_created_list_headline"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profile_activity_watch_list_container"
+                    app:layout_constraintTop_toBottomOf="@id/profile_activity_created_list_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/white">
+                    <TextView
+                        android:id="@+id/profile_activity_watch_list_headline"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/watch_list"
+                        style="@style/ButtonRoboto14Pt"
+                        android:textSize="16sp"
+                        android:textColor="@color/secondary_800"
+                        android:layout_margin="15dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple_white">
+                        <TextView
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/see_all"
+                            style="@style/ButtonRoboto14Pt"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary_900"
+                            android:layout_margin="15dp"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/profile_activity_watch_list_list"
+                        app:layout_constraintTop_toBottomOf="@id/profile_activity_watch_list_headline"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="15dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/profile_activity_logout"
+                    app:layout_constraintTop_toBottomOf="@id/profile_activity_watch_list_container"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wyloguj"
+                    android:textColor="@color/white"
+                    android:background="@drawable/error_button_background"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
+
+                </Button>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/primary_700">
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/profile_activity_back_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:theme="@style/RippleContainer.top_bar"
+                    android:background="@drawable/circle_ripple"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_margin="20dp"
-                    app:tint="@color/white"
-                    android:src="@drawable/back_arrow_64"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profile_activity_back_container">
-                <LinearLayout
-                    android:id="@+id/profile_activity_profile_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/circle_shape"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    android:layout_marginStart="10dp">
                     <ImageView
-                        android:id="@+id/profile_activity_profile_photo"
-                        android:layout_width="128dp"
-                        android:layout_height="128dp"
-                        android:layout_margin="5dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/profile_activity_rated_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/circle_shape"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/profile_activity_profile_container">
-                    <ProgressBar
-                        android:id="@+id/profile_activity_rated_progressbar"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:indeterminate="false"
-                        android:progressDrawable="@drawable/circular_progress_bar"
-                        android:background="@drawable/circle_shape"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:max="100"
-                        android:progress="55"
-                        android:layout_margin="5dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/profile_activity_fav_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/circle_shape"
-                    app:layout_constraintStart_toEndOf="@id/profile_activity_profile_container"
-                    app:layout_constraintEnd_toEndOf="parent">
-                    <ProgressBar
-                        android:id="@+id/profile_activity_fav_progressbar"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:indeterminate="false"
-                        android:progressDrawable="@drawable/circular_progress_bar"
-                        android:background="@drawable/circle_shape"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:max="100"
-                        android:progress="81"
-                        android:layout_margin="5dp" />
-                </LinearLayout>
-
-                <TextView
-                    app:layout_constraintTop_toBottomOf="@id/profile_activity_fav_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/favourite"
-                    style="@style/CaptionRoboto12PtBlack"
-                    app:layout_constraintStart_toEndOf="@id/profile_activity_profile_container"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="10dp"/>
-
-                <TextView
-                    app:layout_constraintTop_toBottomOf="@id/profile_activity_rated_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/rated"
-                    style="@style/CaptionRoboto12PtBlack"
-                    app:layout_constraintEnd_toStartOf="@id/profile_activity_profile_container"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/profile_activity_profile_container"
-                    app:layout_constraintStart_toStartOf="@id/profile_activity_profile_container"
-                    app:layout_constraintEnd_toEndOf="@id/profile_activity_profile_container"
-                    android:text="@{viewModel.userName}"
-                    android:textAppearance="@style/TitleRoboto20Pt"
-                    tools:text="MIKEswim145"
-                    android:layout_marginTop="10dp"
-                    />
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/back_arrow_64"
+                        app:tint="@color/white"
+                        android:padding="5dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,8 +1,7 @@
-package com.apusart.moviesliblary.db
+package com.apusart.moviesliblary.api.local_data_source.db
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 
@@ -22,6 +21,5 @@ abstract class MoviesLibraryDatabase: RoomDatabase() {
         fun initialize(appContext: Context) {
             applicationContext = appContext
         }
-
     }
 }

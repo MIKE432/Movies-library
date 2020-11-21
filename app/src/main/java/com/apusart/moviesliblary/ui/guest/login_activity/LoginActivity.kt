@@ -4,20 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.apusart.MoviesLibraryApplication
+import com.apusart.appComponent
 import com.apusart.moviesliblary.R
+import com.apusart.moviesliblary.api.Resource
 import com.apusart.moviesliblary.databinding.LoginActivityBinding
-import com.apusart.moviesliblary.db.MoviesLibraryDatabase
+import com.apusart.moviesliblary.api.local_data_source.db.MoviesLibraryDatabase
 import com.apusart.moviesliblary.ui.logged.logged_activity.main_activity.MainActivity
 import kotlinx.android.synthetic.main.login_activity.*
+import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity() {
-    private val viewModel: LoginActivityViewModel by viewModels()
+
+    @Inject
+    lateinit var viewModel: LoginActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         val binding: LoginActivityBinding = DataBindingUtil.setContentView(this, R.layout.login_activity)
         binding.viewModel = viewModel
@@ -30,23 +37,29 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "${viewModel.email.value}", Toast.LENGTH_LONG).show()
         }
 
-        viewModel.inProgress.observe(this, Observer { inProgress ->
+        viewModel.sessionIdResource.observe(this, Observer {
 
-            login_activity_error.isVisible = false
+            when(it.status) {
+                Resource.Status.SUCCESS -> {
 
-            if(inProgress) {
-                login_activity_process_container.transitionToEnd()
-            } else {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                    finish()
+                }
+                Resource.Status.PENDING -> {
+
+                    login_activity_process_container.transitionToEnd()
+                }
+                Resource.Status.ERROR -> {
+
+                    login_activity_password_text.text.clear()
+                    login_activity_process_container.transitionToStart()
+                    login_activity_error.isVisible = true
+                }
             }
+
+
         })
 
-        viewModel.isError.observe(this, Observer { isError ->
-            if(isError) {
-                login_activity_password_text.text.clear()
-                login_activity_process_container.transitionToStart()
-                login_activity_error.isVisible = true
-            }
-        })
     }
 }

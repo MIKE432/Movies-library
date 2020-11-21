@@ -6,4 +6,10 @@
 
     <string name="rated">Ocenione</string>
     <string name="favourite">Polubione</string>
+
+    <string name="created_list">Utworzone listy</string>
+    <string name="watch_list">Do obejrzenia</string>
+    <string name="see_all">WSZYSTKIE</string>
+    <string name="logout">Wyloguj</string>
+    <string name="abort">Anuluj</string>
 </resources>
